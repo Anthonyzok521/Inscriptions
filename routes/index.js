@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const MongoUtils = require("./config/mongoUtils");
 const mongo = new MongoUtils();
+let st_name = {};
+let reference;
+let pago_reference;
+let pago = false;
+let pago_otravez = false; 
+let sesion = false;
 
 /* GET home page. */
 router.get('/', (req, res)=>{
@@ -56,9 +62,73 @@ router.post('/', (req, res)=>{
   res.redirect("/agradecimientos");
 
 });
-/* GET home page. */
+
+
 router.get('/agradecimientos', (req, res)=>{
   res.render('agradecimientos');
+});
+
+router.get('/pagos', (req, res)=>{
+  res.render('pagos');
+});
+
+
+router.post('/pagos', (req, res)=>{
+  sesion = true;
+    (async() => {
+        reference = req.body.reference;
+        let find = await mongo.find(req.body.ci);
+        st_name = find;
+        
+        if(st_name == null){
+          res.redirect('/pago-listo');
+        }else{
+          
+          let pagofind = await mongo.findPago(req.body.ci);
+          console.log(pagofind)
+          
+            if(pagofind != null){
+                pago_otravez = true;
+                pago_reference = pagofind.reference
+                res.redirect('/pago-listo');
+            }else{
+
+              setTimeout(()=>{
+                console.log("Estudiante encontrado: " + st_name.firstName);
+                
+                pago = true;
+                res.redirect('/pago-listo');
+              }, 2000);
+          }
+      }
+    })();
+});
+
+
+router.get('/pago-listo', (req, res)=>{
+  if(sesion){
+    if(st_name == null){
+      res.render('pago-listo', {name_student: null});
+    }else{
+      
+        let message;
+        
+        if(pago_otravez){
+          message = "Ya tenemos un pago de usted con refencia de #"+ pago_reference;
+        }else{
+          message = "Ya el pago está hecho, nos vemos en el Curso :)";
+          (async() => {
+            let insert = await mongo.insertPago(st_name.firstName, st_name.lastName, st_name.ci, reference, pago);
+            console.log("Hubo un pago: " + st_name.firstName + " " + reference);
+          })();
+        }
+
+        res.render('pago-listo', {name_student: st_name.firstName, pagoO: message});  
+    }
+    sesion = false;
+  }else{
+    res.redirect("/");
+  }
 });
 
 module.exports = router;
