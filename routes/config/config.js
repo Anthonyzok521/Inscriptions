@@ -1,5 +1,4 @@
 require('dotenv').config()
-console.log(process.env.URL)
 const config = {
     mongo: {
         url: process.env.URL, // => url de conexión mongo

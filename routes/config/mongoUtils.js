@@ -29,12 +29,12 @@ module.exports = class MongoUtils {
 
     async insertData(data) {
         return new Promise((resolve, reject) => {
-            mongoClient.connect(this.getConnectionString(), { useNewUrlParser: true }).then(client => {
+            mongoClient.connect(this.getConnectionString(), { useUnifiedTopology: true, useNewUrlParser: true }).then(client => {
 
                 const db = client.db(this.getDataBaseString());
                 const collection = db.collection(this.getCollectionString());
 
-                collection.insertMany(data, (insertError, insertResponse) => {
+                collection.insertOne(data, (insertError, insertResponse) => {
                     if (insertError) reject(insertError);
                     resolve(insertResponse);
                 });
