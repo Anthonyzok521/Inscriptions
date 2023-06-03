@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <main>
+      <h1>Inscripción</h1>
+      <div class="message" title="¡Hola! Completa el siguiente formulario para inscribirte en el curso">
+        <p>
+          ¡Hola! Completa el siguiente formulario para inscribirte en el curso
+        </p>
+      </div>
+
+      <section id="login">
+        <form action="/home" method="post">
+
+          <div class="container-inputs-login">
+            <input type="text" name="firstname" placeholder="Nombre" required>
+            <input type="text" name="lastname" placeholder="Apellido" required>
+            <input type="text" name="ci" maxlength="8" minlength="8" placeholder="Cédula" required>
+            <input type="tel" name="phone" minlength="11" maxlength="11" placeholder="Teléfono" required>
+            <input type="email" name="email" placeholder="Correo" required>
+            <label for="whereis" >¿Eres Bachiller o Universitario AIS?</label>
+            <div id="options">
+              <div><input type="radio" name="student" id="bachiller">Bachiller</div>
+              <div><input type="radio" name="student" id="universitario">Universitario</div>
+            </div>
+            <input type="number" min="1" max="10" maxlength="2" id="season" name="season" placeholder="" required>
+          </div>
+
+          <input id="button-send" type="submit" value="Inscribirse">
+
+        </form>
+      </section>
+
+    </main>
+    <script src="/javascripts/script.js"></script>
+  </body>
+</html>
