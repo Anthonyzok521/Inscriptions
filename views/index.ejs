@@ -24,13 +24,14 @@
           <div class="container-inputs-login">
             <input type="text" name="firstname" placeholder="Nombre" required>
             <input type="text" name="lastname" placeholder="Apellido" required>
-            <input type="text" name="ci" maxlength="8" minlength="8" placeholder="Cédula" required>
+            <input type="tel" name="ci" maxlength="8" minlength="8" placeholder="Cédula" required>
             <input type="tel" name="phone" minlength="11" maxlength="11" placeholder="Teléfono" required>
             <input type="email" name="email" placeholder="Correo" required>
             <label for="whereis" >¿Eres Bachiller o Universitario AIS?</label>
             <div id="options">
-              <div><input type="radio" name="student" id="bachiller">Bachiller</div>
-              <div><input type="radio" name="student" id="universitario">Universitario</div>
+              <div><input type="radio" name="option id="bachiller">Bachiller</div>
+              <div><input type="radio" name="option" id="universitario">Universitario</div>
+              <input type="hidden" name="student" id="student" value="">
             </div>
             <input type="number" min="1" max="10" maxlength="2" id="season" name="season" placeholder="" required>
           </div>

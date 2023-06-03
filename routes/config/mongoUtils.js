@@ -34,7 +34,7 @@ module.exports = class MongoUtils {
                 const db = client.db(this.getDataBaseString());
                 const collection = db.collection(this.getCollectionString());
 
-                collection.insert(data, (insertError, insertResponse) => {
+                collection.insertMany(data, (insertError, insertResponse) => {
                     if (insertError) reject(insertError);
                     resolve(insertResponse);
                 });
