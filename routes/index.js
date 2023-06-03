@@ -53,8 +53,12 @@ router.post('/', (req, res)=>{
     console.log("Hubo una inscription: " + data_user);
   })();
 
-  res.render('agradecimientos');
+  res.redirect("/agradecimientos");
 
+});
+/* GET home page. */
+router.get('/agradecimientos', (req, res)=>{
+  res.render('agradecimientos');
 });
 
 module.exports = router;
