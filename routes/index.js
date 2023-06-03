@@ -3,29 +3,9 @@ const router = express.Router();
 const MongoUtils = require("./config/mongoUtils");
 const mongo = new MongoUtils();
 
-// Probando creación de una colección.
-
-let firstName = "Anthony",
-  lastName = "Carrillo",
-  ci = "30659229",
-  phone = "04124662193",
-  email = "anthonyzok521@gmail.com",
-  season = 6;
-
-let document = [firstName, lastName, ci, phone, email, season];
-
-/* (async() => {
-    let insert = await mongo.insert(firstName, lastName, password, ci, phone, email, status);
-    console.log("Se ha registrado con éxito: " + document);
-})(); */
-
 /* GET home page. */
 router.get('/', (req, res)=>{
   res.render('index', { title: 'AC Courses - Inscripción' });
-});
-
-router.get('/signin', (req, res)=>{
-  res.render('signin.ejs');
 });
 
 router.post('/', (req, res)=>{
@@ -66,15 +46,15 @@ router.post('/', (req, res)=>{
   }
 
   // Reciviendo datos del usuario
-  let data_user = [req.body.username, req.body.email, req.body.password, req.body.description, date, time, ip]; //Array
-});
+  let data_user = [req.body.firstame, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, ip]; //Array
 
-router.post('/home', (req, res)=>{
-  
-}); 
+  (async() => {
+    let insert = await mongo.insert(req.body.firstame, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season,);
+    console.log("Hubo una inscription: " + data_user);
+  })();
 
-router.get('/home', (req, res)=>{
- 
+  res.render('agradecimientos');
+
 });
 
 module.exports = router;

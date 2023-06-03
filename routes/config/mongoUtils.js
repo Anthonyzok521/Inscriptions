@@ -14,15 +14,15 @@ module.exports = class MongoUtils {
         return config.mongo.collection;
     }
 
-    buildCollection(firstName, lastName, password, ci, phone, email, status) {
+    buildCollection(firstName, lastName, ci, phone, email, student, season) {
         return {
             firstName, 
             lastName, 
-            password, 
             ci, 
             phone, 
             email, 
-            status
+            student,
+            season
             /* createdAt: new Date() */
         }
     }
@@ -45,8 +45,8 @@ module.exports = class MongoUtils {
         });
     }
 
-    async insert(firstName, lastName, password, ci, phone, email, status){
-        let data = this.buildCollection(firstName, lastName, password, ci, phone, email, status);
+    async insert(firstName, lastName, ci, phone, email, student, season){
+        let data = this.buildCollection(firstName, lastName, ci, phone, email, student, season);
         console.log(data);
         return await this.insertData(data);
     }

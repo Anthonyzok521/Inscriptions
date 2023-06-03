@@ -1,8 +1,9 @@
+require('dotenv').config
 const config = {
     mongo: {
-        url: "mongodb+srv://anthonyzok521:JYcVvNuNlJUmDDgm@clustermongodb.hrdpvjb.mongodb.net/?retryWrites=true&w=majority", // => url de conexión mongo
-        database: "inscriptionsDW",
-        collection: "students"
+        url: process.env.URL, // => url de conexión mongo
+        database: process.env.DB,
+        collection: COLLECTION
     }
 }
 
