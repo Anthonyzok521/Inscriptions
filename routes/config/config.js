@@ -3,7 +3,7 @@ const config = {
     mongo: {
         url: process.env.URL, // => url de conexión mongo
         database: process.env.DB,
-        collection: COLLECTION
+        collection: process.env.COLLECTION
     }
 }
 
