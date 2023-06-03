@@ -49,7 +49,7 @@ router.post('/', (req, res)=>{
   let data_user = [req.body.firstame, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, ip]; //Array
 
   (async() => {
-    let insert = await mongo.insert(req.body.firstame, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season,);
+    let insert = await mongo.insert(req.body.firstame, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season);
     console.log("Hubo una inscription: " + data_user);
   })();
 

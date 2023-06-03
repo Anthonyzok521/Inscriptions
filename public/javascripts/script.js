@@ -13,3 +13,11 @@ options.addEventListener('click', ()=>{
         bachiller.value = "Universitario";
     }
 });
+
+    if (typeof(Storage) !== "undefined") {
+        console.log("Sí tiene localstorage");
+        localStorage.setItem("student", "Curso de Angular avanzado - Víctor Robles");
+    } else {
+        console.log("No tiene localstorage");
+    }
+
