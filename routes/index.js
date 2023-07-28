@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
     }
 
     // Reciviendo datos del usuario
-    let data_user = [req.body.firstame, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, ip]; //Array
+    let data_user = [req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, ip]; //Array
 
     (async() => {
         let insert = await mongo.insert(req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, ip);
@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
     })();
 
 
-    let message = {
+    var message = {
         from: 'inscriptions@accourses.com',
         to: process.env.EMAIL_RECEPTION,
         subject: 'Nuevo inscrito',
@@ -77,9 +77,9 @@ router.post('/', (req, res) => {
     <li>Hora y Fecha: ${time} ${date}</li>`,
     };
 
-    let transporter = nodemailer.createTransport({
+    var transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT),
+        port: process.env.SMTP_PORT,
         auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
