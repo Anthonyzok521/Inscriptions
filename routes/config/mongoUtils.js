@@ -14,24 +14,25 @@ module.exports = class MongoUtils {
         return config.mongo.collection;
     }
 
-    buildCollection(firstName, lastName, ci, phone, email, student, season) {
+    buildCollection(firstName, lastName, ci, phone, email, student, season, ip) {
         return {
-            firstName, 
-            lastName, 
-            ci, 
-            phone, 
-            email, 
+            firstName,
+            lastName,
+            ci,
+            phone,
+            email,
             student,
-            season
+            season,
+            ip
             /* createdAt: new Date() */
         }
     }
 
     buildCollectionPago(firstName, lastName, ci, reference, pago) {
         return {
-            firstName, 
-            lastName, 
-            ci, 
+            firstName,
+            lastName,
+            ci,
             reference,
             pago
             /* createdAt: new Date() */
@@ -80,13 +81,13 @@ module.exports = class MongoUtils {
         });
     }
 
-    async insert(firstName, lastName, ci, phone, email, student, season){
-        let data = this.buildCollection(firstName, lastName, ci, phone, email, student, season);
+    async insert(firstName, lastName, ci, phone, email, student, season, ip) {
+        let data = this.buildCollection(firstName, lastName, ci, phone, email, student, season, ip);
         console.log(data);
         return await this.insertData(data);
     }
 
-    async insertPago(firstName, lastName, ci, reference, pago){
+    async insertPago(firstName, lastName, ci, reference, pago) {
         let data = this.buildCollectionPago(firstName, lastName, ci, reference, pago);
         console.log(data);
         return await this.insertDataPago(data);
@@ -101,10 +102,10 @@ module.exports = class MongoUtils {
 
                 const find = collection.find(data);
 
-                find.each((err, doc)=> {
-                    if(err) reject(err);
+                find.each((err, doc) => {
+                    if (err) reject(err);
                     resolve(doc);
-                    });
+                });
 
             }).catch(err => {
                 console.error("Error al conectarse con la base de datos: ", err);
@@ -121,10 +122,10 @@ module.exports = class MongoUtils {
 
                 const find = collection.find(data);
 
-                find.each((err, doc)=> {
-                    if(err) reject(err);
+                find.each((err, doc) => {
+                    if (err) reject(err);
                     resolve(doc);
-                    });
+                });
 
             }).catch(err => {
                 console.error("Error al conectarse con la base de datos: ", err);
@@ -132,13 +133,13 @@ module.exports = class MongoUtils {
         });
     }
 
-    async find(ci){
+    async find(ci) {
         let data = this.buildCollectionFind(ci);
         //console.log(data);
         return await this.findData(data);
     }
 
-    async findPago(ci){
+    async findPago(ci) {
         let data = this.buildCollectionFind(ci);
         //console.log(data);
         return await this.findDataPago(data);

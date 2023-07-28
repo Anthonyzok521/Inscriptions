@@ -1,58 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Inscribirse"/>
+    <meta property="og:title" content="Inscribirse" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ac-courses.onrender.com" />
-    <meta property="og:image" content="https://www.apptus.com/static/images/resources/guides/singles-day-2020/singles-day-checklist.jpg">
+    <meta property="og:image:url" content="/images/icon.png">
+    <!--https://png.pngtree.com/thumb_back/fh260/background/20210902/pngtree-blue-cram-school-border-summer-training-course-image_789185.jpg-->
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="400" />
     <meta property="og:image:height" content="300" />
     <meta property="og:image:alt" content="Inscríbete :)" />
-    <meta property="og:description" content="Página para inscribirse en el curso de Desarrollo Web: Báscio - Intermedio" />
+    <meta property="og:description" content="Aprovecha la gran oportunidad para adquirir nuevos conocimientos con un lenguaje de programación" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon">
-  </head>
-  <body>
+</head>
+
+<body>
     <main>
-<!--<h1>Inscripciones Cerradas</h1>-->
+        <h1>Inscripción</h1>
+        <!-- <div class="message" title="¡Hola! Completa el siguiente formulario para inscribirte en el curso">
+            <p>
+                ¡Hola! Completa el siguiente formulario para inscribirte en el curso
+            </p>
+        </div> -->
+        <img class="logo" src="/images/pc.png">
+        <section id="login">
+            <form action="/" method="post">
 
-      <h1>Inscripción</h1>
-      <div class="message" title="¡Hola! Completa el siguiente formulario para inscribirte en el curso">
-        <p>
-          ¡Hola! Completa el siguiente formulario para inscribirte en el curso
-        </p>
-      </div>
+                <div class="container-inputs-login">
+                    <input type="text" name="firstname" placeholder="Nombre" required>
+                    <input type="text" name="lastname" placeholder="Apellido" required>
+                    <input type="tel" name="ci" maxlength="8" minlength="8" placeholder="Cédula" required>
+                    <input type="tel" name="phone" minlength="11" maxlength="11" placeholder="Teléfono" required>
+                    <input type="email" name="email" placeholder="Correo" required>
+                    <label for="whereis">¿Eres Bachiller o Universitario AIS?</label>
+                    <div id="options">
+                        <div><input type="radio" name="option" id="bachiller">Bachiller</div>
+                        <div><input type="radio" name="option" id="universitario">Universitario</div>
+                        <input type="hidden" name="student" id="student" value="">
+                    </div>
+                    <input type="number" min="1" max="10" maxlength="2" id="season" name="season" placeholder="" required>
+                </div>
 
-      <section id="login">
-        <form action="/" method="post" >
+                <input id="button-send" type="submit" value="Inscribirse">
 
-          <div class="container-inputs-login">
-            <input type="text" name="firstname" placeholder="Nombre" required>
-            <input type="text" name="lastname" placeholder="Apellido" required>
-            <input type="tel" name="ci" maxlength="8" minlength="8" placeholder="Cédula" required>
-            <input type="tel" name="phone" minlength="11" maxlength="11" placeholder="Teléfono" required>
-            <input type="email" name="email" placeholder="Correo" required>
-            <label for="whereis" >¿Eres Bachiller o Universitario AIS?</label>
-            <div id="options">
-              <div><input type="radio" name="option" id="bachiller">Bachiller</div>
-              <div><input type="radio" name="option" id="universitario">Universitario</div>
-              <input type="hidden" name="student" id="student" value="">
-            </div>
-            <input type="number" min="1" max="10" maxlength="2" id="season" name="season" placeholder="" required>
-          </div>
-
-          <input id="button-send" type="submit" value="Inscribirse">
-
-        </form>
-      </section>
+            </form>
+        </section>
 
     </main>
     <script src="/javascripts/script.js"></script>
-  </body>
+</body>
+
 </html>

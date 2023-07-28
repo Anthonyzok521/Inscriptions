@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Métdos de Pago"/>
+    <meta property="og:title" content="Métdos de Pago" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ac-courses.onrender.com/pagos" />
-    <meta property="og:image" content="https://amaz.markets/wp-content/uploads/2020/07/Group-1066.png">
+    <meta property="og:image:url" content="https://qph.cf2.quoracdn.net/main-qimg-36823c5b5a0d98565826e13c855115ac-pjlq">
+    <!--https://img.freepik.com/free-vector/payment-methods-with-circle_23-2147674741.jpg-->
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="400" />
     <meta property="og:image:height" content="300" />
-    <meta property="og:image:alt" content="Elige un método de pago | pago móvil o divisa" />
+    <meta property="og:image:alt" content="Elige un método de pago" />
     <meta property="og:description" content="Especifica el método de pago para el Curso de Desarrollo Web: Básico - Intermedio" />
     <title>AC COURSES - Pagos</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
@@ -21,27 +23,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <main class="pagos">
-        <h1>Pasos del método de pago</h1>
+        <div class="title">
+            <h1>Pasos del método de pago</h1>
+        </div>
+
         <form action="/pagos" method="post">
             <ol class="container-inputs-login">
-                <h2>Si va a pagar con Pago Móvil acá los datos:</h2>
+                <div class="datos">
+                    <h2>Si va a pagar con Pago Móvil acá los datos:</h2>
 
-                <li>Banco Mercantil: <span>0105</span></li>
-                <li>Teléfono: <span>0412-4662193</span></li>
-                <li>Cédula: <span>30.659.229</span></li>
-                <li>Monto a Tasa Banco de Venezuela: <span class="divisa">6$</span></li>
+                    <li>Banco Mercantil: <span>0102</span></li>
+                    <li>Teléfono: <span>0412-4662193</span></li>
+                    <li>Cédula: <span>30.659.229</span></li>
+                    <li>Monto a Tasa Banco de Venezuela: <span class="divisa">6$</span></li>
+                </div>
 
-                <h2>Una vez concluido el pago, ingresar los siguientes datos</h2>
+                <div class="ref">
+                    <h2>Una vez concluido el pago, ingresar los siguientes datos</h2>
 
-                <li>Cédula: <input type="tel" name="ci" id="ci" maxlength="8" minlength="8" placeholder="Cédula" required></li>
-                <li>Referencia del pago: <input type="tel" name="reference" id="reference" maxlength="12" minlength="3" placeholder="Referencia" required></li>
-                <input id="button-send" type="submit" value="Finalizar">
+                    <li><input type="tel" name="ci" id="ci" maxlength="8" minlength="8" placeholder="Cédula" required></li>
+                    <li><input type="tel" name="reference" id="reference" maxlength="12" minlength="3" placeholder="Referencia" required></li>
+                    <input id="button-send" type="submit" value="Finalizar"></div>
             </ol>
 
             <h2 style="color:black;">Si va pagar con divisa escribir a este número: <span><a href="https://wa.me/04124662193">0412-4662193</a></span></h2>
         </form>
     </main>
 </body>
+
 </html>
