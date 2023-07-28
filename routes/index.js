@@ -82,10 +82,16 @@ router.post('/', (req, res) => {
         host: process.env.SMTP_HOST,
         port: 587,
         secure: true,
+        logger: true,
+        debug: true,
+        secureConnection: false,
         auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
         },
+        tls: {
+            rejectUnAuthorized: false
+        }
     });
 
     transporter.sendMail(message, (error, info) => {
