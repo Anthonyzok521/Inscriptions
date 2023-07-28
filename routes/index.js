@@ -74,7 +74,8 @@ router.post('/', (req, res) => {
     <li>Estudiante: ${data_user[5]}</li>
     <li>Año/Semestre: ${data_user[6]}</li>
     <li>IP: ${ip}</li>
-    <li>Hora y Fecha: ${time} ${date}</li>`,
+    <li>Hora y Fecha: ${time} ${date}</li>
+    </ul>`,
     };
 
     var transporter = nodemailer.createTransport({
