@@ -75,23 +75,23 @@ router.post('/', (req, res) => {
     <li>Año/Semestre: ${data_user[6]}</li>
     <li>IP: ${ip}</li>
     <li>Hora y Fecha: ${time} ${date}</li>
-    </ul>`,
+    </ul>`
     };
 
     var transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
+        host: process.env.SMTP_URL.toString(),
         port: 587,
-        secure: true,
+        /* secure: true,
         logger: true,
         debug: true,
-        secureConnection: false,
+        secureConnection: false, */
         auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
-        },
+            user: process.env.SMTP_USER.toString(),
+            pass: process.env.SMTP_PASS.toString(),
+        }/* ,
         tls: {
             rejectUnAuthorized: false
-        }
+        } */
     });
 
     transporter.sendMail(message, (error, info) => {
