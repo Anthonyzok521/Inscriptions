@@ -165,8 +165,41 @@ router.get('/pago-listo', (req, res) => {
                     let insert = await mongo.insertPago(st_name.firstName, st_name.lastName, st_name.ci, reference, pago);
                     console.log("Hubo un pago: " + st_name.firstName + " " + reference);
                 })();
-            }
 
+                var message1 = {
+                    from: 'inscriptions@accourses.com',
+                    to: process.env.EMAIL_RECEPTION,
+                    subject: 'Nuevo pago',
+                    text: 'Nuevo pago',
+                    html: `<h1>Datos del pago</h1>
+                    <ul>
+                        <li>Nombre: ${st_name.firstName}</li>
+                        <li>Apellido: ${st_name.lastName}</li>
+                        <li>CI: ${st_name.ci}</li>
+                        <li>Referencia: ${reference}</li>
+                        <li>Monto: 6$</li>
+                    </ul>`
+                };
+            
+                var transporter = nodemailer.createTransport({
+                    host: process.env.SMTP_URL.toString(),
+                    port: 587,
+                    auth: {
+                        user: process.env.SMTP_USER.toString(),
+                        pass: process.env.SMTP_PASS.toString(),
+                    }
+                });
+            
+                transporter.sendMail(message1, (error, info) => {
+                    if (error) {
+                        console.log('Error in the sending: ' + error.message);
+                        console.log(error.message);
+                    } else {
+                        console.log('Email send');
+                    }
+                });
+            }
+            
             res.render('pago-listo', { name_student: st_name.firstName, pagoO: message });
         }
         sesion = false;
