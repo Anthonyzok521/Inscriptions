@@ -42,19 +42,19 @@ router.post('/', (req, res) => {
         date += _date[d];
     }
 
-    //Formateando la IP
+    /* //Formateando la IP
     if (ip) {
         let ip_ls = ip.split(',');
         ip = ip_ls[ip_ls.length - 1];
     } else {
         console.log('IP adress not found');
-    }
+    } */
 
     // Reciviendo datos del usuario
-    let data_user = [req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, ip]; //Array
+    let data_user = [req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip]; //Array
 
     (async() => {
-        let insert = await mongo.insert(req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, ip);
+        let insert = await mongo.insert(req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip);
         console.log("Hubo una inscription: " + data_user);
     })();
 
@@ -73,7 +73,8 @@ router.post('/', (req, res) => {
     <li>Email: ${data_user[4]}</li>
     <li>Estudiante: ${data_user[5]}</li>
     <li>Año/Semestre: ${data_user[6]}</li>
-    <li>IP: ${ip}</li>
+    <li>IP: ${data_user[7}</li>
+    <li>Origen: ${req.body.country}</li>
     <li>Hora y Fecha: ${time} ${date}</li>
     </ul>`
     };
