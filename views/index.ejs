@@ -60,7 +60,7 @@
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
             let xmlhttp = new XMLHttpRequest();
-            let url = "https://api.ipfind.com/me?<%=API_KEY%>";
+            let url = "https://api.ipfind.com/me?auth=<%=API_KEY%>";
     
             xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
