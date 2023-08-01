@@ -13,7 +13,7 @@ let sesion = false;
 
 /* GET home page. */
 router.get('/', (req, res) => {
-    res.render('index', { title: 'AC Courses - Inscripción' });
+    res.render('index', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY});
 });
 
 router.post('/', (req, res) => {
