@@ -46,8 +46,8 @@
                         <div><input type="radio" name="option" id="universitario">Universitario</div>
                         <input type="hidden" name="student" id="student" value="">
                     </div>
-                    <input type="hidden" value="" id="ip">
-                    <input type="hidden" value="" id="country">
+                    <input type="hidden" name="ip" value="" id="ip">
+                    <input type="hidden" name="country" value="" id="country">
                     <input type="number" min="1" max="10" maxlength="2" id="season" name="season" placeholder="" required>
                 </div>
 
@@ -60,7 +60,7 @@
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
             let xmlhttp = new XMLHttpRequest();
-            let url = "https://api.ipfind.com/me?auth=669fb739-c41f-4763-8aac-e4ca4c279df7";
+            let url = "https://api.ipfind.com/me?<%=API_KEY%>";
     
             xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
