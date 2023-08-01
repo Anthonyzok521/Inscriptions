@@ -73,7 +73,7 @@ router.post('/', (req, res) => {
     <li>Email: ${data_user[4]}</li>
     <li>Estudiante: ${data_user[5]}</li>
     <li>Año/Semestre: ${data_user[6]}</li>
-    <li>IP: ${data_user[7}</li>
+    <li>IP: ${data_user[7]}</li>
     <li>Origen: ${req.body.country}</li>
     <li>Hora y Fecha: ${time} ${date}</li>
     </ul>`
