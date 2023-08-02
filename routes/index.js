@@ -51,10 +51,10 @@ router.post('/', (req, res) => {
     } */
 
     // Reciviendo datos del usuario
-    let data_user = [req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip]; //Array
+    let data_user = [req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip, pago]; //Array
 
     (async() => {
-        let insert = await mongo.insert(req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip);
+        let insert = await mongo.insert(req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip, pago);
         console.log("Hubo una inscription: " + data_user);
     })();
 
@@ -82,17 +82,10 @@ router.post('/', (req, res) => {
     var transporter = nodemailer.createTransport({
         host: process.env.SMTP_URL.toString(),
         port: 587,
-        /* secure: true,
-        logger: true,
-        debug: true,
-        secureConnection: false, */
         auth: {
             user: process.env.SMTP_USER.toString(),
             pass: process.env.SMTP_PASS.toString(),
-        }/* ,
-        tls: {
-            rejectUnAuthorized: false
-        } */
+        }
     });
 
     transporter.sendMail(message, (error, info) => {
