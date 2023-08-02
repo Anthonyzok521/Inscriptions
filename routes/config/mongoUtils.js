@@ -85,7 +85,13 @@ module.exports = class MongoUtils {
         console.log(data);
         return await this.insertData(data);
     }
-
+    
+    async updatePay(firstName, pay) {
+        /* let data = this.buildCollection(firstName, lastName, ci, phone, email, student, season, ip, pay);
+        console.log(data); */
+        return await this.updateDataPay(firstName, pay);
+    }
+    
     async insertPago(firstName, lastName, ci, reference, pay) {
         let data = this.buildCollectionPago(firstName, lastName, ci, reference, pay);
         console.log(data);
@@ -132,7 +138,7 @@ module.exports = class MongoUtils {
         });
     }
 
-    async updateDataPago(filter, update) {
+    async updateDataPay(filter, update) {
         return new Promise((resolve, reject) => {
             mongoClient.connect(this.getConnectionString(), { useUnifiedTopology: true, useNewUrlParser: true }).then(client => {
             const db = client.db(this.getDataBaseString());
