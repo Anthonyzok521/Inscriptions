@@ -132,6 +132,23 @@ module.exports = class MongoUtils {
         });
     }
 
+    async updateDataPago(filter, update) {
+        return new Promise((resolve, reject) => {
+            mongoClient.connect(this.getConnectionString(), { useUnifiedTopology: true, useNewUrlParser: true }).then(client => {
+            const db = client.db(this.getDataBaseString());
+            const collection = db.collection('pagos');
+
+            collection.updateOne(filter, update, (err, result) => {
+                if (err) reject(err);
+                resolve(result);
+            });
+
+            }).catch(err => {
+            console.error("Error al conectarse con la base de datos: ", err);
+            });
+        });
+    }
+    
     async find(ci) {
         let data = this.buildCollectionFind(ci);
         //console.log(data);
