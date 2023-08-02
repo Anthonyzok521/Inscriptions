@@ -165,8 +165,13 @@ router.get('/pago-listo', (req, res) => {
                 const update = { $set: { pay: pago } };
             
                 // Actualizar un solo documento
-                const result = await mongo.updateDataPago(filter, update);
-                console.log(result);
+                //const result = await mongo.updateDataPago(filter, update);
+               // console.log(result);
+
+                (async() => {
+                    let update = await mongo.updatePay(st_name.firstName, pago);
+                    console.log(update);
+                })();
                 var message1 = {
                     from: 'inscriptions@accourses.com',
                     to: process.env.EMAIL_RECEPTION,
