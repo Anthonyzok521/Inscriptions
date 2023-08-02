@@ -159,7 +159,14 @@ router.get('/pago-listo', (req, res) => {
                     let insert = await mongo.insertPago(st_name.firstName, st_name.lastName, st_name.ci, reference, pago);
                     console.log("Hubo un pago: " + st_name.firstName + " " + reference);
                 })();
+                const filter = { firstName: st_name.firstName };
 
+                // Definir los cambios que se realizarán en los documentos
+                const update = { $set: { pay: pago } };
+            
+                // Actualizar un solo documento
+                const result = await collection.updateOne(filter, update);
+                console.log(result);
                 var message1 = {
                     from: 'inscriptions@accourses.com',
                     to: process.env.EMAIL_RECEPTION,
