@@ -169,8 +169,8 @@ router.get('/pago-listo', (req, res) => {
                // console.log(result);
 
                 (async() => {
-                    let update = await mongo.updatePay(st_name.firstName, pago);
-                    console.log(update);
+                    let updatepay = await mongo.updatePay(filter, update);
+                    console.log(updatepay);
                 })();
                 var message1 = {
                     from: 'inscriptions@accourses.com',
