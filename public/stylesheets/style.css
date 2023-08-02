@@ -24,18 +24,20 @@ h1 {
 
 .containerpay {
     display:grid;
-    grid-template-area: "pay";
+    grid-template-areas: "pay";
 }
 
 .containerpay div  {
     grid-area: pay;
-    background-color: #ff9100b0;
-    padding: 20px;
+    background-color: rgb(248 124 50 / 30%);
+    padding: 15px;
+    filter: blur(1px);
 }
 
 .pay {
     color: white;
-    padding: 20px;
+    font-size: 15px;
+    padding: 15px;
     grid-area: pay;
     z-index: 1;
 }
