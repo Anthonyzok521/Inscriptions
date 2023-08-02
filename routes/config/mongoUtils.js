@@ -14,7 +14,7 @@ module.exports = class MongoUtils {
         return config.mongo.collection;
     }
 
-    buildCollection(firstName, lastName, ci, phone, email, student, season, ip) {
+    buildCollection(firstName, lastName, ci, phone, email, student, season, ip, pay) {
         return {
             firstName,
             lastName,
@@ -23,19 +23,18 @@ module.exports = class MongoUtils {
             email,
             student,
             season,
-            ip
-            /* createdAt: new Date() */
+            ip,
+            pay
         }
     }
 
-    buildCollectionPago(firstName, lastName, ci, reference, pago) {
+    buildCollectionPago(firstName, lastName, ci, reference, pay) {
         return {
             firstName,
             lastName,
             ci,
             reference,
-            pago
-            /* createdAt: new Date() */
+            pay
         }
     }
 
@@ -81,14 +80,14 @@ module.exports = class MongoUtils {
         });
     }
 
-    async insert(firstName, lastName, ci, phone, email, student, season, ip) {
-        let data = this.buildCollection(firstName, lastName, ci, phone, email, student, season, ip);
+    async insert(firstName, lastName, ci, phone, email, student, season, ip, pay) {
+        let data = this.buildCollection(firstName, lastName, ci, phone, email, student, season, ip, pay);
         console.log(data);
         return await this.insertData(data);
     }
 
-    async insertPago(firstName, lastName, ci, reference, pago) {
-        let data = this.buildCollectionPago(firstName, lastName, ci, reference, pago);
+    async insertPago(firstName, lastName, ci, reference, pay) {
+        let data = this.buildCollectionPago(firstName, lastName, ci, reference, pay);
         console.log(data);
         return await this.insertDataPago(data);
     }
