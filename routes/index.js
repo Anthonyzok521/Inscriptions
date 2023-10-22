@@ -10,10 +10,11 @@ let pago_reference;
 let pago = false;
 let pago_otravez = false;
 let sesion = false;
+let open = true;
 
 /* GET home page. */
 router.get('/', (req, res) => {
-    res.render('index', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY});
+    res.render('index', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY, open:open});
 });
 
 router.post('/', (req, res) => {
