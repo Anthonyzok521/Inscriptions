@@ -1,0 +1,22 @@
+<%- include('../headers/header-index') %>
+
+<body>
+    <main>
+        <% if(!open) { %>
+        <h1>Inscripción</h1>
+        <div class="message">
+            <p>
+                Cerrado
+            </p>
+        </div>
+        <% } else { %>
+            <%- include('main') %>
+        <% } %>
+    </main>
+    <input type="hidden" value="<%=API_KEY%>">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/javascripts/api.js"></script>
+    <script src="/javascripts/script.js"></script>
+</body>
+
+</html>

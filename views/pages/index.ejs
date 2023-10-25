@@ -1,22 +1,21 @@
 <%- include('../headers/header-index') %>
-
 <body>
-    <main>
-        <% if(!open) { %>
-        <h1>Inscripción</h1>
-        <div class="message">
-            <p>
-                Cerrado
-            </p>
-        </div>
-        <% } else { %>
-            <%- include('main') %>
-        <% } %>
-    </main>
-    <input type="hidden" value="<%=API_KEY%>">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/javascripts/api.js"></script>
-    <script src="/javascripts/script.js"></script>
+    <div style="width: 100%; height: 80vh; display: flex; justify-content: center; align-items: center;">
+        <h1>No disponible</h1>
+    </div>
+    <footer style="position: fixed; bottom: 0; width: 100%; text-align: center;">
+        <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <h4 class="alert-heading">Mensaje!</h4>
+        <p class="mb-0">Esta página no está disponible, <a href="#" class="alert-link">pronto se habilitará</a>.</p>
+    </footer>
+    
+</div>
 </body>
-
+<script>
+    let close = document.querySelector(".btn-close");
+    close.addEventListener("click", () => {
+        close.parentElement.style.display = "none";
+    })
+</script>
 </html>

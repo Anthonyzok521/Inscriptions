@@ -12,12 +12,16 @@ let pago_otravez = false;
 let sesion = false;
 let open = true;
 
-/* GET home page. */
+
 router.get('/', (req, res) => {
     res.render('pages/index', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY, open:open});
 });
 
-router.post('/', (req, res) => {
+router.get('/inscriptions', (req, res) => {
+    res.render('pages/inscriptions', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY, open:open});
+});
+
+router.post('/inscriptions', (req, res) => {
     // Obteniendo IP del usuario a través del servidor, Fecha y Hora
     let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     let dt = new Date();
