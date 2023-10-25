@@ -14,7 +14,7 @@ let open = true;
 
 /* GET home page. */
 router.get('/', (req, res) => {
-    res.render('index', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY, open:open});
+    res.render('pages/index', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY, open:open});
 });
 
 router.post('/', (req, res) => {
@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
 
     (async() => {
         let insert = await mongo.insert(req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip, pago);
-        console.log("Hubo una inscription: " + data_user);
+        console.log("New Inscription: " + data_user);
     })();
 
 
@@ -82,7 +82,7 @@ router.post('/', (req, res) => {
 
     var transporter = nodemailer.createTransport({
         host: process.env.SMTP_URL.toString(),
-        port: 587,
+        port: parseInt(process.env.SMTP_PORT),
         auth: {
             user: process.env.SMTP_USER.toString(),
             pass: process.env.SMTP_PASS.toString(),
@@ -98,21 +98,21 @@ router.post('/', (req, res) => {
         }
     });
 
-    res.redirect("/agradecimientos");
+    res.redirect("/thanks");
 
 });
 
 
-router.get('/agradecimientos', (req, res) => {
-    res.render('agradecimientos');
+router.get('/thanks', (req, res) => {
+    res.render('pages/thanks');
 });
 
-router.get('/pagos', (req, res) => {
-    res.render('pagos');
+router.get('/pays', (req, res) => {
+    res.render('pages/pays');
 });
 
 
-router.post('/pagos', (req, res) => {
+router.post('/pays', (req, res) => {
     sesion = true;
     (async() => {
         reference = req.body.reference;
@@ -120,7 +120,7 @@ router.post('/pagos', (req, res) => {
         st_name = find;
 
         if (st_name == null) {
-            res.redirect('/pago-listo');
+            res.redirect('/payout');
         } else {
 
             let pagofind = await mongo.findPago(req.body.ci);
@@ -129,14 +129,14 @@ router.post('/pagos', (req, res) => {
             if (pagofind != null) {
                 pago_otravez = true;
                 pago_reference = pagofind.reference
-                res.redirect('/pago-listo');
+                res.redirect('/payout');
             } else {
 
                 setTimeout(() => {
-                    console.log("Estudiante encontrado: " + st_name.firstName);
+                    console.log("Student Found: " + st_name.firstName);
 
                     pago = true;
-                    res.redirect('/pago-listo');
+                    res.redirect('/payout');
                 }, 2000);
             }
         }
@@ -144,10 +144,10 @@ router.post('/pagos', (req, res) => {
 });
 
 
-router.get('/pago-listo', (req, res) => {
+router.get('/payout', (req, res) => {
     if (sesion) {
         if (st_name == null) {
-            res.render('pago-listo', { name_student: null });
+            res.render('pages/payout', { name_student: null });
         } else {
 
             let message;
@@ -158,7 +158,7 @@ router.get('/pago-listo', (req, res) => {
                 message = "Ya el pago está hecho, nos vemos en el Curso :)";
                 (async() => {
                     let insert = await mongo.insertPago(st_name.firstName, st_name.lastName, st_name.ci, reference, pago);
-                    console.log("Hubo un pago: " + st_name.firstName + " " + reference);
+                    console.log("New pay: " + st_name.firstName + " " + reference);
                 })();
                 const filter = { firstName: st_name.firstName };
 
@@ -190,7 +190,7 @@ router.get('/pago-listo', (req, res) => {
             
                 var transporter = nodemailer.createTransport({
                     host: process.env.SMTP_URL.toString(),
-                    port: 587,
+                    port: parseInt(process.env.SMTP_PORT),
                     auth: {
                         user: process.env.SMTP_USER.toString(),
                         pass: process.env.SMTP_PASS.toString(),
@@ -207,7 +207,7 @@ router.get('/pago-listo', (req, res) => {
                 });
             }
             
-            res.render('pago-listo', { name_student: st_name.firstName, pagoO: message });
+            res.render('pages/payout', { name_student: st_name.firstName, pagoO: message });
         }
         sesion = false;
     } else {

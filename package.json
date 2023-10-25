@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "dev": "nodemon *",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -17,5 +18,8 @@
     "nodemailer": "^6.9.4",
     "pdfkit": "^0.13.0",
     "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
