@@ -14,6 +14,17 @@
 </body>
 <script>
     let close = document.querySelector(".btn-close");
+    const btnNav = document.querySelector('#btn-nav'),
+    collapse = document.querySelector('#navbarColor02');
+
+  btnNav.addEventListener('click', ()=>{
+    if(collapse.style.display == 'none'){
+        collapse.style.display = 'block';
+    }else{
+        collapse.style.display = 'none';
+    }
+    })
+    
     close.addEventListener("click", () => {
         close.parentElement.style.display = "none";
     })

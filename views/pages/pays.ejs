@@ -1,32 +1,54 @@
 <%- include('../headers/header-pays') %>
+<style>
+    .card-body div{
+        margin-bottom: 20px;
+    }
+</style>
 <body>
-    <main class="pays">
-        <div class="title">
-            <h1>Pasos del método de pago</h1>
-        </div>
-
-        <form action="/pays" method="post">
-            <ol class="container-inputs-login">
-                <div class="datos">
-                    <h2>Si va a pagar con Pago Móvil acá los datos:</h2>
-
-                    <li>Banco Mercantil: <span>0105</span></li>
-                    <li>Teléfono: <span>0412-4662193</span></li>
-                    <li>Cédula: <span>30.659.229</span></li>
-                    <li>Monto a Tasa Banco de Venezuela: <span class="divisa">6$</span></li>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Pasos del método de pago</h4>
+            <form action="/pays" method="post">
+            <div>
+            <h6 class="card-subtitle mb-2 text-muted">Si va a pagar con Pago Móvil acá los datos:</h6>        
+                <li>Banco Mercantil: <span>0105</span></li>
+                <li>Teléfono: <span>0412-4662193</span></li>
+                <li>Cédula: <span>30.659.229</span></li>
+                <li>Monto a Tasa Banco de Venezuela: <span class="divisa">6$</span></li>
+            </div>
+            <div>
+                <h6 class="card-subtitle mb-2 text-muted">Una vez concluido el pago, ingresar los siguientes datos</h6>
+                <div class="form-group" style="display: flex; flex-direction: column; gap: 10px">
+                    <input type="tel" class="form-control" name="ci" id="ci" maxlength="8" minlength="8" placeholder="Cédula" required>
+                    <input type="tel" class="form-control" name="reference" id="reference" maxlength="12" minlength="3" placeholder="Referencia" required>
                 </div>
 
-                <div class="ref">
-                    <h2>Una vez concluido el pago, ingresar los siguientes datos</h2>
-
-                    <li><input type="tel" name="ci" id="ci" maxlength="8" minlength="8" placeholder="Cédula" required></li>
-                    <li><input type="tel" name="reference" id="reference" maxlength="12" minlength="3" placeholder="Referencia" required></li>
-                    <input id="button-send" type="submit" value="Finalizar"></div>
-            </ol>
-
-            <h2 style="color:black;">Si va pagar con divisa escribir a este número: <span><a href="https://wa.me/04124662193">0412-4662193</a></span></h2>
+                <input class="btn btn-success" id="button-send" type="submit" value="Finalizar">
+            </div>
+        </div>
+            <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <h4 class="alert-heading">Nota</h4>
+            <p class="mb-0">Si va pagar con divisa escribir a este número: <span><a href="https://wa.me/04124662193">0412-4662193</a></span></p>
+            </div>
         </form>
-    </main>
+        </div>
+    </div>
 </body>
+<script>
+    let close = document.querySelector(".btn-close");
+    const btnNav = document.querySelector('#btn-nav'),
+    collapse = document.querySelector('#navbarColor02');
 
+  btnNav.addEventListener('click', ()=>{
+    if(collapse.style.display == 'none'){
+        collapse.style.display = 'block';
+    }else{
+        collapse.style.display = 'none';
+    }
+    })
+    close.addEventListener("click", () => {
+        close.parentElement.style.display = "none";
+    })
+</script>
 </html>

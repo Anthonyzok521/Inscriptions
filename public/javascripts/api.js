@@ -1,4 +1,4 @@
-let a = document.querySelector('input');
+let a = document.querySelector("input[name='api']");
 let xmlhttp = new XMLHttpRequest();
 let url = `https://api.ipfind.com/me?auth=${a.value}`;
 

@@ -1,34 +1,47 @@
-<img class="logo" src="/images/acc.png">
-        <section id="login">
-            <form action="/inscriptions" method="post">
+<div class="container-fluid">
+    <img class="loge" src="/images/acc.png">
+</div>
+    <section>
+        <div class="card border-light mb-3" style="/*max-width: 20rem;*/">
+        <div class="card-header">Inscripción</div>
+        <div class="card-body">
+        <form action="/inscriptions" method="post">
+            <div class="form-group" style="display: flex;flex-direction: column; gap: 2px;">
+                <input type="text" id="inputDefault" class="form-control" name="firstname" placeholder="Nombre" required>
+                <input type="text" id="inputDefault" class="form-control" name="lastname" placeholder="Apellido" required>
+                <input type="tel" id="inputDefault" class="form-control" name="ci" maxlength="8" minlength="8" placeholder="Cédula" required>
+                <input type="tel" id="inputDefault" class="form-control" name="phone" minlength="11" maxlength="11" placeholder="Teléfono" required>
+                <input type="email" id="inputDefault" class="form-control" name="email" placeholder="Correo" required>
+            </div>
+                <label for="whereis" style="margin-top: 10px;">¿Eres Bachiller o Universitario AIS?</label>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="options" style="display: flex;justify-content: center; align-items: center;">
+                    <input type="radio" class="btn-check" name="option" id="bachiller" autocomplete="off" checked="">
+                    <label class="btn btn-outline-primary" for="bachiller" id="bac">Bachiller</label>
+                    <input type="radio" class="btn-check" name="option" id="universitario" autocomplete="off" checked="">
+                    <label class="btn btn-outline-primary" for="universitario" id="uni">Universitario</label>
+                    <input type="hidden" name="student" id="student" value="">
+                </div>     
+                    
 
-                <div class="container-inputs-login">
-                    <input type="text" name="firstname" placeholder="Nombre" required>
-                    <input type="text" name="lastname" placeholder="Apellido" required>
-                    <input type="tel" name="ci" maxlength="8" minlength="8" placeholder="Cédula" required>
-                    <input type="tel" name="phone" minlength="11" maxlength="11" placeholder="Teléfono" required>
-                    <input type="email" name="email" placeholder="Correo" required>
-                    <label for="whereis">¿Eres Bachiller o Universitario AIS?</label>
-                    <div id="options">
+                    <!-- <div id="options">
                         <div><input type="radio" name="option" id="bachiller">Bachiller</div>
                         <div><input type="radio" name="option" id="universitario">Universitario</div>
-                        <input type="hidden" name="student" id="student" value="">
-                    </div>
+                        
+                    </div> -->
                     <input type="hidden" name="ip" value="" id="ip">
                     <input type="hidden" name="country" value="" id="country">
+                    <input type="hidden" name="api" value="<%=API_KEY%>">
                     <!--<input type="number" min="1" max="10" maxlength="2" id="season" name="season" placeholder="" required>-->
                     <div class="form-group">
-                        <label for="exampleSelect1" class="form-label mt-4">oijoijs</label>
-                        <select class="form-select" id="exampleSelect1" name="season">
-                            
+                        <label for="exampleSelect1" class="form-label mt-4">Año/Semestre</label>
+                        <select class="form-select" id="exampleSelect1" name="season">                            
                         </select>
                     </div>
                 </div>
 
-                <input id="button-send" type="submit" value="Inscribirse">
-                 <div class="containerpay">
-                    <div></div>
-                    <a class="pay" href="/pays">Si ya te inscribiste puedes pagar por aquí</a>
-                </div>
+                <input id="button-send" type="submit" value="Inscribirse" class="btn btn-success">
+                <a href="/pays" class="card-link" style="text-align: center; margin-top: 10px;">Si ya te inscribiste puedes pagar por aquí</a>
             </form>
+            </div>
+        </div>
         </section>

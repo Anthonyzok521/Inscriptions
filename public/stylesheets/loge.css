@@ -1,0 +1,17 @@
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loge {
+    padding: 6px;
+    width: 100px;
+    height: 100px;
+    border: solid;
+    border-radius: 14px;
+    margin: 20px;
+}
+
+main {
+    height: 100vh;
+}

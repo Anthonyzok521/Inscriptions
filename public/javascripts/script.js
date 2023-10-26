@@ -1,11 +1,16 @@
 let options = document.querySelector('#options'),
-bachiller = document.querySelector('#bachiller'),
+bachiller = document.querySelector('#bac'),
+universitario = document.querySelector('#uni'),
 student = document.querySelector('#student'),
 season = document.querySelector('.form-select'),
 label = document.querySelector('.form-label');
 
 const createOptions = async (num)=>{
-    
+    if(season.children[0] != undefined){
+        season.childNodes.forEach((node)=>{
+            node.parentNode.removeChild(node);
+        })
+    }
       for(let i = 0; i < num; i++){
         console.log(i);
         let option = document.createElement('OPTION');
@@ -16,18 +21,18 @@ const createOptions = async (num)=>{
         }  
 }
 
-options.addEventListener('click', ()=>{
-    if(bachiller.checked){
+bachiller.addEventListener('click', ()=>{
         (async() => {
             await createOptions(5);
         })();
         student.value = "Bachiller";
-    }else{
-        (async() => {
+});
+
+universitario.addEventListener('click', ()=>{
+    (async() => {
             await createOptions(10);
         })();
         student.value = "Universitario";
-    }
 });
 
     if (typeof(Storage) !== "undefined") {
@@ -36,4 +41,3 @@ options.addEventListener('click', ()=>{
     } else {
         console.log("No tiene localstorage");
     }
-
