@@ -14,7 +14,7 @@ let open = true;
 
 
 router.get('/', (req, res) => {
-    res.render('pages/index', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY, open:open});
+    res.render('pages/inscriptions', { title: 'AC Courses - Inscripción' , API_KEY:process.env.API_KEY, open:open});
 });
 
 router.get('/inscriptions', (req, res) => {
