@@ -1,6 +1,6 @@
 <%- include('../headers/header-payout') %>
 <style>
-    div{
+    .msg{
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -20,12 +20,13 @@
         
     }
 </style>
+
 <body>
-    <div >
+    <div class="msg" >
         <% if (name_student != null) { %>
             <h1 >
         ¡Hola, <%= name_student%>! <%= pagoO %></h1><br>
-        <a href="/inscriptions">Inicio</a>
+        <a href="/inscriptions" class="btn btn-primary">Inicio</a>
     <% } else { %>
         
        <div class="alert alert-dismissible alert-danger">
