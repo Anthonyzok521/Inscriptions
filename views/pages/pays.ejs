@@ -1,10 +1,27 @@
-<%- include('../headers/header-pays') %>
 <style>
     .card-body div{
         margin-bottom: 20px;
     }
+
+    .main-pay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
+
+  overflow: auto;
+}
+
+.main-pay .card{
+    min-width: 50%;
+    max-width: max-content;
+}
+
 </style>
+<%- include('../headers/header-pays') %>
 <body>
+    <main class="main-pay">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Pasos del método de pago</h4>
@@ -34,21 +51,7 @@
         </form>
         </div>
     </div>
+</main>
+<script src="/javascripts/dropdown.js"></script>
 </body>
-<script>
-    let close = document.querySelector(".btn-close");
-    const btnNav = document.querySelector('#btn-nav'),
-    collapse = document.querySelector('#navbarColor02');
-
-  btnNav.addEventListener('click', ()=>{
-    if(collapse.style.display == 'none'){
-        collapse.style.display = 'block';
-    }else{
-        collapse.style.display = 'none';
-    }
-    })
-    close.addEventListener("click", () => {
-        close.parentElement.style.display = "none";
-    })
-</script>
 </html>
