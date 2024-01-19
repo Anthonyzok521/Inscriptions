@@ -1,22 +1,29 @@
 <%- include('../headers/header-payout') %>
-<body>
-    <div style="height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;">
-        <% if (name_student != null) { %>
-            <h1 style="
-            /* height: 100px; */
-            display: flex;
-            color: white;
+<style>
+    div{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    h1{
+        /* height: 100px; */
+        display: flex;
+            color: black;
             font-family: 'Source Sans Pro', sans-serif;
             text-align: center;
             align-items: center;
             border-radius: 20px;
             word-wrap: break-word;
             flex-direction: column;
-        ">
+        
+    }
+</style>
+<body>
+    <div >
+        <% if (name_student != null) { %>
+            <h1 >
         ¡Hola, <%= name_student%>! <%= pagoO %></h1><br>
         <a href="/inscriptions">Inicio</a>
     <% } else { %>
