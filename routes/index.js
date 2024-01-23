@@ -56,10 +56,10 @@ router.post('/inscriptions', (req, res) => {
     } */
 
     // Reciviendo datos del usuario
-    let data_user = [req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip, pago]; //Array
+    let data_user = [req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip, false]; //Array
 
     (async() => {
-        let insert = await mongo.insert(req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip, pago);
+        let insert = await mongo.insert(req.body.firstname, req.body.lastname, req.body.ci, req.body.phone, req.body.email, req.body.student, req.body.season, req.body.ip, false);
         console.log("New Inscription: " + data_user);
     })();
 
