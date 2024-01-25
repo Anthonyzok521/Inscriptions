@@ -10,7 +10,7 @@ let pago_reference;
 let pago = false;
 let pago_otravez = false;
 let sesion = false;
-let open = false;
+let open = true;
 
 
 router.get('/', (req, res) => {
