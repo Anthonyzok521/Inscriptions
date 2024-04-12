@@ -63,7 +63,7 @@ module.exports = class MongoUtils {
         })
         .then((client) => {
           const db = client.db(this.getDataBaseString());
-          const collection = db.collection("students_py");
+          const collection = db.collection(this.getCollectionString());
 
           collection.insertOne(data, (insertError, insertResponse) => {
             if (insertError) reject(insertError);
@@ -153,7 +153,7 @@ module.exports = class MongoUtils {
         })
         .then((client) => {
           const db = client.db(this.getDataBaseString());
-          const collection = db.collection("students_py");
+          const collection = db.collection(this.getCollectionString());
 
           const find = collection.find(data);
 
